@@ -1,19 +1,24 @@
 import './App.css';
-import { useState, } from 'react'; 
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from './Home';
 import ListaUsuarios from './ListaUsuarios';
 
-function App() {
-  const [count, setCount] = useState(0);
 
-  
+function App() {
   return (
-    <div>
-      {/* Vamos colocar seu código aqui dentro */}
-      <h1>Boas-vindas</h1>
-      <p>Contagem: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Incrementar</button>
-      <ListaUsuarios />
-    </div>
+    <BrowserRouter>
+    <nav>
+      <Link to="/home">Home</Link> | 
+      <Link to="/usuarios">Usuários</Link>
+    </nav>
+    <br />
+    
+    <Routes>
+      <Route path="/home" element={<Home />} />
+      <Route path="/usuarios" element={<ListaUsuarios />} />
+      <Route path="/" element={<Home />} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
